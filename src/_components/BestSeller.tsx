@@ -3,14 +3,11 @@ import MainHeading from "@/components/ui/main-heading";
 import Image from "next/image";
 import Menu from "@/components/ui/menu";
 import { db } from "@/lib/prisma";
+import { get } from "http";
+import { getBestSellers } from "@/server/db/products";
 
 async function BestSeller() {
-  const bestSellers = await db.product.findMany({
-    include: {
-      sizes: true,
-      extra: true,
-    },
-  });
+  const bestSellers = await getBestSellers();
   console.log(bestSellers);
   //   const bestSellers = [
   //   // Example best seller items
