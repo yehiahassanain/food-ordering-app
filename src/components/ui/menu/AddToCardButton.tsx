@@ -18,21 +18,11 @@ import {
   RadioGroupItem,
 } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
+import { ProductWithRelations } from "@/types/product";
 
 
 
-const sizes = [
-  {id:crypto.randomUUID(), name: 'Small', price: 0},
-  {id:crypto.randomUUID(), name: 'Medium', price: 20},
-  {id:crypto.randomUUID(), name: 'Large', price: 20},
-]
-
-const extras = [
-  {id:crypto.randomUUID(), name: 'Chesse', price: 2},
-  {id:crypto.randomUUID(), name: 'Onion', price: 4},
-  {id:crypto.randomUUID(), name: 'Tomato', price: 6},
-]
-const AddToCardButton = ({ item }: { item: any }) => {
+const AddToCardButton = ({ item }: { item: ProductWithRelations }) => {
   return (
     <Dialog>
       <form>
@@ -50,18 +40,18 @@ const AddToCardButton = ({ item }: { item: any }) => {
             <img src={item.image} alt={item.name} width={200} height={200} />
             <DialogTitle>{item.name}</DialogTitle>
             <DialogDescription className="text-center">
-              {item.desription}
+              {item.description}
             </DialogDescription>
           </DialogHeader>
           <div className="space-y-10">
             <div className="space-y-2 text-center">
               <label htmlFor="pick-size">Pick Your Quantity</label>
-              <PickSize sizes={sizes} item={item}/>
+              <PickSize sizes={item.sizes} item={item}/>
             </div>
 
              <div className="space-y-2 text-center">
               <label htmlFor="pick-extra">Any Extra?</label>
-              <PickSExtra extras={extras} item={item}/>
+              <PickSExtra extras={item.extra} item={item}/>
             </div>
           </div>
           <DialogFooter >
