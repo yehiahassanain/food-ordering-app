@@ -7,7 +7,7 @@ import { get } from "http";
 import { getBestSellers } from "@/server/db/products";
 
 async function BestSeller() {
-  const bestSellers = await getBestSellers();
+  const bestSellers = await getBestSellers(3);
   console.log(bestSellers);
   //   const bestSellers = [
   //   // Example best seller items
