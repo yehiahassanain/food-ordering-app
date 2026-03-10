@@ -1,0 +1,10 @@
+import { Environments } from '@/constants/enums';
+import {configureStore} from '@reduxjs/toolkit';   
+
+export const store = configureStore({
+  reducer: {},
+  devTools: process.env.NODE_ENV === Environments.DEV,
+});
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = ReturnType<typeof store.dispatch>;
